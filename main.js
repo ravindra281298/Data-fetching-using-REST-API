@@ -19,7 +19,22 @@ MongoClient.connect(url,(err,client)=>{
     console.log(`connected to database: ${dbName}`);
 });
 
+var subject=["Chemistry","Maths","Physics"];
 
+/*
+router.post('/',(req,res)=>{
+    var arr=req.body.id;
+    var minMarks=[],marMarks=[];
+    for(var i=0;i<arr.length;i++){
+        operation.show(db,myColl,arr[i],(docs)=>{
+            console.log(docs);
+            minMarks.push(docs);
+        });   
+    }
+    res.json({msg:"done",minMarks});
+})
+*/
+          
 router.get('/:id',(req,res)=>{
     if(req.params.id.length<55 || !req.params.id){
         return res.status(400).json({msg:"invalid content :("});
@@ -27,14 +42,13 @@ router.get('/:id',(req,res)=>{
     var id=req.params.id;
     console.log('inside the get functions..!!!');
     // res.json({msg:`id is: ${id}`});
-
+    
     operation.show(db,myColl,id,(docs)=>{
         // res.json({msg:`docs:\n ${docs.parent}`});
-        console.log(docs);
+        console.log(docs[0].topicAnalysis.Chemistry.minMarks);    // to fetch content from array :)
         res.json({msg:'data\n',docs});
         console.log('data displayed..!!');
     });
 });
-
 
 module.exports=router;
