@@ -19,7 +19,7 @@ MongoClient.connect(url,(err,client)=>{
     console.log(`connected to database: ${dbName}`);
 });
 
-var subject=["Chemistry","Maths","Physics"];
+var subject=["Chemistry","Physics","Maths"];
 var minMarks=[10000,10000,10000];
 var maxMarks=[-10000,-10000,-10000];
 var avgMarks=[0,0,0];
@@ -65,7 +65,7 @@ router.get('/',(req,res)=>{
     res.json({Subjects:`MinMarks MaxMarks AvgMarks`,
               Chemistry:`${minMarks[0]}      ${maxMarks[0]}     ${avgMarks[0].toFixed(2)}`,
               Physics:`  ${minMarks[1]}      ${maxMarks[1]}     ${avgMarks[1].toFixed(2)}`,
-              Maths:`    ${minMarks[2]}      ${maxMarks[2]}     ${avgMarks[2].toFixed(2)}`});
+              maths:`    ${minMarks[2]}      ${maxMarks[2]}     ${avgMarks[2].toFixed(2)}`});
 });
 
 module.exports=router;
